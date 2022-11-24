@@ -73,6 +73,15 @@ const Login = () => {
                 <p>Go to resale mobile <Link className='text-white' to="/signup">Create new Account</Link></p>
                 <div className="divider">OR</div>
                 <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <div className="divider">OR</div>
+
+                <div className="dropdown dropdown-open">
+                  <label tabIndex={0} className="btn m-1">Select Item</label>
+                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                      <li><button onClick={handleSubmit(handleLogin)} className='btn btn-outline w-full' > User</button></li>
+                      <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'> Seller</button>    
+                    </ul>
+                </div>
             </div>
         </div>
     );

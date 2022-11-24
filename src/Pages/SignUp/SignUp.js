@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, {  useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -6,8 +7,21 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, providerLogin } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
+
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogleSignIn=()=>{
+        providerLogin(googleProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error=>console.error(error))
+       }
+    
+
     const handleSignUp = (data) => {
         console.log(data);
         setSignUPError('');
@@ -62,8 +76,17 @@ const SignUp = () => {
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                  
+                <div className="divider">OR</div>
 
+             <div className="dropdown dropdown-open">
+               <label tabIndex={0} className="btn m-1">Select Item</label>
+               <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><button onClick={handleSubmit(handleSignUp)} className='btn btn-outline w-full' > User</button></li>
+                   <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'> Seller</button>    
+                 </ul>
+             </div>
             </div>
         </div>
     );
