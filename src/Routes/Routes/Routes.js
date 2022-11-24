@@ -1,3 +1,6 @@
+import AppleProducts from "../../Pages/Home/ProductCards/AppleProducts";
+import OnePlusProducts from "../../Pages/Home/ProductCards/OnePlusProducts";
+import XiaomiProducts from "../../Pages/Home/ProductCards/XiaomiProducts";
 import Login from "../../Pages/Login/Login";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -17,7 +20,20 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/apple',
+                element: <AppleProducts></AppleProducts>
+            },
+            {
+                path: '/xoami',
+                element: <XiaomiProducts></XiaomiProducts>
+            },
+            {
+                path: '/oneplus',
+                element: <OnePlusProducts></OnePlusProducts>
             }
+
         ]
     }
 ])
