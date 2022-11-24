@@ -1,0 +1,28 @@
+[
+    {
+        "_id": "635a0c0b64a6d231228942ae",
+        "service_id": "01",
+        "title": "OnePlus 9",
+        "img": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-9-.jpg",
+        "location": "Khustia ",
+        "resaleprice": "$350.00",
+        "orginalprice":  "$400",
+        "useyear": "3 month",
+        "postdate": "10may2022",
+        "sellername": "Mr Fotka",
+        "sellerverification": "verified"
+    },
+    {
+        "_id": "635a0c0b64a6d231228942af",
+        "service_id": "02",
+        "title": "OnePlus 9 Pro",
+        "img": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-9-pro-.jpg",
+        "location": "Pabna ",
+        "resaleprice": "$350",
+        "orginalprice":  "$450",
+        "useyear": "5 month",
+        "postdate": "10may2022",
+        "sellername": "Mr bekkar",
+        "sellerverification": " "
+    }  
+]

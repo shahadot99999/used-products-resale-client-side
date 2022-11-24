@@ -1,0 +1,28 @@
+[
+    {
+        "_id": "635a0c0b64a6d231228942ae",
+        "service_id": "01",
+        "title": "Apple iPhone 11 Pro",
+        "img": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max-.jpg",
+        "location": "Dhaka ",
+        "resaleprice": "$450.00",
+        "orginalprice":  "$250",
+        "useyear": "1 year",
+        "postdate": "10may2022",
+        "sellername": "Mr Khan",
+        "sellerverification": "verified"
+    },
+    {
+        "_id": "635a0c0b64a6d231228942af",
+        "service_id": "02",
+        "title": "Apple iPhone 8",
+        "img": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-new.jpg",
+        "location": "Khulna ",
+        "resaleprice": "$135",
+        "orginalprice":  "$100",
+        "useyear": "3 month",
+        "postdate": "10may2022",
+        "sellername": "Mr Jobbar",
+        "sellerverification": " "
+    }  
+]

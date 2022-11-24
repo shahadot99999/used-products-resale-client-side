@@ -1,0 +1,28 @@
+[
+    {
+        "_id": "635a0c0b64a6d231228942ae",
+        "service_id": "01",
+        "title": "Xiaomi 12T Pro",
+        "img": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-12t-pro-.jpg",
+        "location": "Jessore ",
+        "resaleprice": "$450.00",
+        "orginalprice":  "$590",
+        "useyear": "3 month",
+        "postdate": "10may2022",
+        "sellername": "Mr Korim",
+        "sellerverification": "verified"
+    },
+    {
+        "_id": "635a0c0b64a6d231228942af",
+        "service_id": "02",
+        "title": "Xiaomi Redmi Note 12",
+        "img": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-12-5g.jpg",
+        "location": "Foridpur ",
+        "resaleprice": "$135",
+        "orginalprice":  "$180",
+        "useyear": "5 month",
+        "postdate": "10may2022",
+        "sellername": "Mr bekkar",
+        "sellerverification": " "
+    }  
+]
