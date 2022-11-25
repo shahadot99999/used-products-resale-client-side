@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const AppleBookingModal = ({apple, setApple}) => {
     const {title, resaleprice, slots} =apple;
+
+    const {user}= useContext(AuthContext);
 
     const handleBooking = event => {
         event.preventDefault();
@@ -20,8 +24,29 @@ const AppleBookingModal = ({apple, setApple}) => {
             email,
             phone
         }
-        console.log(booking);
-        setApple(null);
+
+
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setApple(null);
+                    toast.success('WelCome for order.');
+                    //refetch();
+                }
+                else{
+                    toast.error(data.message);
+                }
+            })
+
+
     }
     return (
         <>
@@ -40,8 +65,8 @@ const AppleBookingModal = ({apple, setApple}) => {
                                 >{slot}</option>)
                             }
                         </select>
-    <input name="name" type="name" placeholder="Your Name" className="input w-full " />
-    <input name="email" type="email" placeholder="Email Adress" className="input w-full " />
+    <input name="name" type="name"  defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full " />
+    <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Adress" className="input w-full " />
     <input name="phone" type="phone" placeholder="Phone Number" className="input w-full " />
     <br/>
     <input className='btn btn-accent w-full ' type="submit" value="submit" />
