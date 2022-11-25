@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import XiaomiBookingModal from '../../XiaomiBookingModal/XiaomiBookingModal';
 import XiaomiProduct from './XiaomiProduct';
 
 const XiaomiProducts = () => {
 
     const [services, setServices]= useState([]);
+
+    const [xiaomi, setXiaomi]= useState(null)
+
     useEffect(()=>{
         fetch('xiaomiservices.json')
         .then(res=>res.json())
@@ -21,9 +25,20 @@ const XiaomiProducts = () => {
                    services.map(service=> <XiaomiProduct
                        key={service._id}
                         service={service}
+                        setXiaomi={setXiaomi}
                          ></XiaomiProduct>)
                             }   
             </div>
+            { 
+                xiaomi &&
+                <XiaomiBookingModal
+                xiaomi={xiaomi}
+                setXiaomi={setXiaomi}
+                ></XiaomiBookingModal>
+            
+            }
+
+
         </div>
     );
 };

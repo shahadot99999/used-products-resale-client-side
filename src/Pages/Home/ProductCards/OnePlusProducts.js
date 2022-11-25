@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import OnePlusBookingModal from '../../OnePlusBookingModal/OnePlusBookingModal';
 import OnePlusProduct from './OnePlusProduct';
 
 const OnePlusProducts = () => {
     const [services, setServices]= useState([]);
+
+    const [oneplus,setOnePlus]=useState(null)
+
     useEffect(()=>{
         fetch('oneplusservice.json')
         .then(res=>res.json())
@@ -21,11 +25,23 @@ const OnePlusProducts = () => {
                services.map(service=> <OnePlusProduct
                    key={service._id}
                     service={service}
+                      setOnePlus={setOnePlus}
                      ></OnePlusProduct>)
 
                      
                         }   
         </div>
+
+               {
+                   
+                   oneplus &&
+                    <OnePlusBookingModal
+                    oneplus={oneplus}
+                    setOnePlus={setOnePlus}
+                    ></OnePlusBookingModal>
+
+               }
+
         </div>
 
 

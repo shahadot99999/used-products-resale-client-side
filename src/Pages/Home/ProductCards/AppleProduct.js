@@ -1,7 +1,7 @@
 import React from 'react';
 
-const AppleProduct = ({service}) => {
-    const {img,title, location, resaleprice, orginalprice,useyear, postdate, sellername, sellerverification}=service;
+const AppleProduct = ({service, setApple}) => {
+    const {img,title, location, resaleprice, orginalprice,useyear, postdate, sellername, sellerverification, slots}=service;
     return (
 
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -15,8 +15,14 @@ const AppleProduct = ({service}) => {
     <p>postdate: {postdate}</p>
     <p>sellername: {sellername}</p>
     <p>sellerverification:{sellerverification}</p>
+    <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p>
+    <p>{slots.length} {slots.length > 1 ? 'available' : 'space'}</p>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+      
+      <label htmlFor="apple-booking-modal" 
+      className="btn btn-primary text-white"
+      onClick={()=>setApple(service)}
+      >Order Now</label>
    
     </div>
   </div>
@@ -27,20 +33,3 @@ const AppleProduct = ({service}) => {
 
 export default AppleProduct;
 
-// {/* <div className="card card-compact w-96 bg-base-100 shadow-xl">
-//         <figure><img src={img} alt=" " /></figure>
-//         <div className="card-body">
-//             <h2 className="card-title">{title}</h2>
-//             <p className='text-2xl text-orange-600 font-semibold'>location: {location}</p> 
-//             <p className='text-2xl text-orange-600 font-semibold'>resaleprice: {resaleprice}</p> 
-//             <p className='text-2xl text-orange-600 font-semibold'>orginalprice: {orginalprice}</p> 
-//             <p className='text-2xl text-orange-600 font-semibold'>useyear: {useyear}</p> 
-//             <p className='text-2xl text-orange-600 font-semibold'>postdate: {postdate}</p> 
-//             <p className='text-2xl text-orange-600 font-semibold'>sellername: {sellername}</p> 
-//             <p className='text-2xl text-orange-600 font-semibold'>sellerverification: {sellerverification}</p> 
-            
-//             <div className="card-actions justify-end">
-//                 <button className="btn btn-primary">Buy Now</button>
-//             </div>
-//         </div>
-//     </div> */}

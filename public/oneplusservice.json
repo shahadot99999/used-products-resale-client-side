@@ -10,7 +10,12 @@
         "useyear": "3 month",
         "postdate": "10may2022",
         "sellername": "Mr Fotka",
-        "sellerverification": "verified"
+        "sellerverification": "verified",
+        "slots": [
+            "3",
+            "2",
+            "1"
+          ]
     },
     {
         "_id": "635a0c0b64a6d231228942af",
@@ -23,6 +28,11 @@
         "useyear": "5 month",
         "postdate": "10may2022",
         "sellername": "Mr bekkar",
-        "sellerverification": " "
+        "sellerverification": " ",
+        "slots": [
+            "3",
+            "2",
+            "1"
+          ]
     }  
 ]

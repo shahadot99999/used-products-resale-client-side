@@ -1,7 +1,7 @@
 import React from 'react';
 
-const XiaomiProduct = ({service}) => {
-    const {img,title, location, resaleprice, orginalprice,useyear, postdate, sellername, sellerverification}=service;
+const XiaomiProduct = ({service, setXiaomi}) => {
+    const {img,title, location, slots, resaleprice, orginalprice,useyear, postdate, sellername, sellerverification}=service;
     return (
        
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -15,8 +15,14 @@ const XiaomiProduct = ({service}) => {
     <p>postdate: {postdate}</p>
     <p>sellername: {sellername}</p>
     <p>sellerverification:{sellerverification}</p>
+    <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p>
+    <p>{slots.length} {slots.length > 1 ? 'available' : 'space'}</p>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+      
+      <label htmlFor="apple-booking-modal" 
+      className="btn btn-primary text-white"
+      onClick={()=>setXiaomi(service)}
+      >Order Now</label>
    
     </div>
   </div>
