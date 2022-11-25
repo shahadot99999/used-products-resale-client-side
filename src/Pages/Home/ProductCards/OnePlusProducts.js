@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import OnePlusBookingModal from '../../OnePlusBookingModal/OnePlusBookingModal';
-import OnePlusProduct from './OnePlusProduct';
+import OnePlusProduct from './OnePlusProduct'; 
 
 const OnePlusProducts = () => {
     const [services, setServices]= useState([]);
