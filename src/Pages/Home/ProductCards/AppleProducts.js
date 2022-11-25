@@ -1,17 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import AppleBookingModal from '../../AppleBookingModal/AppleBookingModal';
 import AppleProduct from './AppleProduct';
 
 const AppleProducts = () => {
-    const [services, setServices]= useState([]);
+   //  const [services, setServices]= useState([]);
 
-    const [apple, setApple]= useState(null)
+    const [apple, setApple]= useState(null);
 
-    useEffect(()=>{
-        fetch('appleservices.json')
+    const {data:services=[]}= useQuery({
+        queryKey: ['appleservices'],
+        queryFn: ()=> fetch('http://localhost:5000/appleservices')
         .then(res=>res.json())
-        .then (data=>setServices(data))
-    },[services])
+    })
+
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/appleservices')
+    //     .then(res=>res.json())
+    //     .then (data=>setServices(data))
+    // },[services])
 
 
 

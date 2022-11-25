@@ -1,18 +1,27 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import XiaomiBookingModal from '../../XiaomiBookingModal/XiaomiBookingModal';
 import XiaomiProduct from './XiaomiProduct';
 
 const XiaomiProducts = () => {
 
-    const [services, setServices]= useState([]);
+    //const [services, setServices]= useState([]);
 
     const [xiaomi, setXiaomi]= useState(null)
 
-    useEffect(()=>{
-        fetch('xiaomiservices.json')
+    const {data:services=[]}= useQuery({
+        queryKey: ['xiaomiservices'],
+        queryFn: ()=> fetch('http://localhost:5000/xiaomiservices')
         .then(res=>res.json())
-        .then (data=>setServices(data))
-    },[services])
+    })
+
+
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/xiaomiservices')
+    //     .then(res=>res.json())
+    //     .then (data=>setServices(data))
+    // },[services])
+    
     return (
         <div>
             <div className='text-center mb-4'>

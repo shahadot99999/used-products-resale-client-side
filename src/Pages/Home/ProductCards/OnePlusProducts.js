@@ -1,17 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import OnePlusBookingModal from '../../OnePlusBookingModal/OnePlusBookingModal';
 import OnePlusProduct from './OnePlusProduct'; 
 
 const OnePlusProducts = () => {
-    const [services, setServices]= useState([]);
+   // const [services, setServices]= useState([]);
 
     const [oneplus,setOnePlus]=useState(null)
 
-    useEffect(()=>{
-        fetch('oneplusservice.json')
+    const {data:services=[]}= useQuery({
+        queryKey: ['oneplusservice'],
+        queryFn: ()=> fetch('http://localhost:5000/oneplusservice')
         .then(res=>res.json())
-        .then (data=>setServices(data))
-    },[services])
+    })
+
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/oneplusservice')
+    //     .then(res=>res.json())
+    //     .then (data=>setServices(data))
+    // },[services])
 
     return (
         <div>
