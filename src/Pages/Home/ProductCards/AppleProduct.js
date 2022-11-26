@@ -1,6 +1,7 @@
+import { format } from 'date-fns';
 import React from 'react';
 
-const AppleProduct = ({service, setApple}) => {
+const AppleProduct = ({service, setApple, selectedDate, setSelectedDate}) => {
     const {img,title, location, resaleprice, orginalprice,useyear, postdate, sellername, sellerverification, slots}=service;
     return (
 
@@ -15,11 +16,19 @@ const AppleProduct = ({service, setApple}) => {
     <p>postdate: {postdate}</p>
     <p>sellername: {sellername}</p>
     <p>sellerverification:{sellerverification}</p>
-    <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p>
-    <p>{slots.length} {slots.length > 1 ? 'available' : 'space'}</p>
+    <p>You have selected date: {format(selectedDate, "PP")}</p>
+
+    {/* <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p> */}
+    <p>{slots.length}{slots.length > 1 ? 'available' : 'space'}</p>
+    
+
     <div className="card-actions justify-end">
       
-      <label htmlFor="apple-booking-modal" 
+      <label 
+      
+      disabled={slots.length === 0}
+      htmlFor="apple-booking-modal" 
+      
       className="btn btn-primary text-white"
       onClick={()=>setApple(service)}
       >Order Now</label>

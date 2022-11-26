@@ -1,9 +1,12 @@
+import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
-const AppleBookingModal = ({apple, setApple}) => {
+const AppleBookingModal = ({apple, setApple, selectedDate, setSelectedDate, refetch}) => {
     const {title, resaleprice, slots} =apple;
+
+    const date = format(selectedDate, 'PP');
 
     const {user}= useContext(AuthContext);
 
@@ -17,9 +20,8 @@ const AppleBookingModal = ({apple, setApple}) => {
         console.log(slot, email, name, phone);
         
         const booking = {
-           
+           booking: date,
            user: name,
-         
             slot,
             email,
             phone
@@ -39,7 +41,7 @@ const AppleBookingModal = ({apple, setApple}) => {
                 if (data.acknowledged) {
                     setApple(null);
                     toast.success('WelCome for order.');
-                    //refetch();
+                    refetch();
                 }
                 else{
                     toast.error(data.message);
@@ -55,8 +57,10 @@ const AppleBookingModal = ({apple, setApple}) => {
     <div className="modal-box relative">
     <label htmlFor="apple-booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 className="text-lg font-bold">{title}</h3>
+    {/* <p>You have selected date: {format(selectedDate, "PP")}</p> */}
     <form  onSubmit={handleBooking} className='grid grid-cols-1 gap-2 mt-3'>
     <input type="text" value={resaleprice} className="input w-full " />
+    <input type="text" disabled value={date} className="input w-full input-bordered " />
     <select name="slot" className="select select-bordered w-full">
                             {
                                 slots.map((slot, i) => <option
@@ -68,6 +72,7 @@ const AppleBookingModal = ({apple, setApple}) => {
     <input name="name" type="name"  defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full " />
     <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Adress" className="input w-full " />
     <input name="phone" type="phone" placeholder="Phone Number" className="input w-full " />
+
     <br/>
     <input className='btn btn-accent w-full ' type="submit" value="submit" />
     </form>
