@@ -1,11 +1,12 @@
+import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
-const OnePlusBookingModal = ({oneplus, setOnePlus}) => {
+const OnePlusBookingModal = ({oneplus, setOnePlus, selectedDate, setSelectedDate, refetch}) => {
 
     const {title, resaleprice, slots} =oneplus;
-
+    const date = format(selectedDate, 'PP');
     const {user}= useContext(AuthContext);
 
     const handleBooking = event => {
@@ -18,9 +19,10 @@ const OnePlusBookingModal = ({oneplus, setOnePlus}) => {
         console.log(slot, email, name, phone);
         
         const booking = {
-           
+            productname:title,
+            price: resaleprice,
+            booking: date,
            user: name,
-         
             slot,
             email,
             phone
@@ -38,7 +40,7 @@ const OnePlusBookingModal = ({oneplus, setOnePlus}) => {
                 if (data.acknowledged) {
                     setOnePlus(null);
                     toast.success('WelCome for order.');
-                    //refetch();
+                    refetch();
                 }
                 else{
                     toast.error(data.message);
@@ -54,6 +56,7 @@ const OnePlusBookingModal = ({oneplus, setOnePlus}) => {
 <h3 className="text-lg font-bold">{title}</h3>
 <form  onSubmit={handleBooking} className='grid grid-cols-1 gap-2 mt-3'>
 <input type="text" value={resaleprice} className="input w-full " />
+<input type="text" disabled value={date} className="input w-full input-bordered " />
 <select name="slot" className="select select-bordered w-full">
                         {
                             slots.map((slot, i) => <option

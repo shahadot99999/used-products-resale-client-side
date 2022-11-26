@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OnePlusProduct = ({service,setOnePlus }) => {
+const OnePlusProduct = ({service,setOnePlus, selectedDate, setSelectedDate }) => {
     const {img,title,slots, location, resaleprice, orginalprice,useyear, postdate, sellername, sellerverification}=service;
     return (
       
@@ -15,11 +15,13 @@ const OnePlusProduct = ({service,setOnePlus }) => {
     <p>postdate: {postdate}</p>
     <p>sellername: {sellername}</p>
     <p>sellerverification:{sellerverification}</p>
-    <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p>
+    {/* <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p> */}
     <p>{slots.length} {slots.length > 1 ? 'available' : 'space'}</p>
     <div className="card-actions justify-end">
       
-      <label htmlFor="apple-booking-modal" 
+      <label 
+      disabled={slots.length === 0}
+      htmlFor="apple-booking-modal" 
       className="btn btn-primary text-white"
       onClick={()=>setOnePlus(service)}
       >Order Now</label>

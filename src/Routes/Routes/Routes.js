@@ -1,4 +1,6 @@
+import DashboardLayout from "../../Layout/DashboardLayout";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import AppleProducts from "../../Pages/Home/ProductCards/AppleProducts";
 import OnePlusProducts from "../../Pages/Home/ProductCards/OnePlusProducts";
 import XiaomiProducts from "../../Pages/Home/ProductCards/XiaomiProducts";
@@ -46,7 +48,13 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyProducts></MyProducts>
+            }
+        ]
     }
 ])
 

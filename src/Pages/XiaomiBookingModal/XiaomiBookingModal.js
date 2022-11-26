@@ -21,7 +21,9 @@ const XiaomiBookingModal = ({xiaomi, setXiaomi, selectedDate, setSelectedDate, r
         console.log(slot, email, name, phone);
         
         const booking = {
-           
+
+             productname:title,
+            price: resaleprice,
             booking: date,
             user: name,
             slot,

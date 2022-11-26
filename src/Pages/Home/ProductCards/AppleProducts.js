@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import AppleBookingModal from '../../AppleBookingModal/AppleBookingModal';
 import AppleProduct from './AppleProduct';
 import {DayPicker}from 'react-day-picker';

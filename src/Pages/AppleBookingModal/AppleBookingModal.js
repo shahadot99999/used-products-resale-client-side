@@ -20,6 +20,8 @@ const AppleBookingModal = ({apple, setApple, selectedDate, setSelectedDate, refe
         console.log(slot, email, name, phone);
         
         const booking = {
+            productname:title,
+            price: resaleprice,
            booking: date,
            user: name,
             slot,

@@ -12,9 +12,9 @@
         "sellername": "Mr Fotka",
         "sellerverification": "verified",
         "slots": [
-            "3",
-            "2",
-            "1"
+            "08.00 AM - 08.30 PM",
+            "08.30 AM - 09.00 PM",
+            "09.00 AM - 9.30 PM"
           ]
     },
     {
@@ -30,9 +30,9 @@
         "sellername": "Mr bekkar",
         "sellerverification": " ",
         "slots": [
-            "3",
-            "2",
-            "1"
+            "08.00 AM - 08.30 PM",
+            "08.30 AM - 09.00 PM",
+            "09.00 AM - 9.30 PM"
           ]
     }  
 ]

@@ -1,16 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import { format } from 'date-fns';
+import React, {  useState } from 'react';
 import OnePlusBookingModal from '../../OnePlusBookingModal/OnePlusBookingModal';
+import {DayPicker}from 'react-day-picker';
 import OnePlusProduct from './OnePlusProduct'; 
 
 const OnePlusProducts = () => {
    // const [services, setServices]= useState([]);
-
+   const [selectedDate, setSelectedDate]=useState(new Date())
     const [oneplus,setOnePlus]=useState(null)
 
-    const {data:services=[]}= useQuery({
-        queryKey: ['oneplusservice'],
-        queryFn: ()=> fetch('http://localhost:5000/oneplusservice')
+    const date = format(selectedDate, 'PP');
+
+    const {data:services=[], refetch}= useQuery({
+        queryKey: ['oneplusservice', date],
+        queryFn: ()=> fetch(`http://localhost:5000/oneplusservice?date=${date}`)
         .then(res=>res.json())
     })
 
@@ -25,14 +29,28 @@ const OnePlusProducts = () => {
 
            <div className='text-center mb-4'>
               <p className='text-5xl  font-semibold text-orange-600'>Oneplus Resale  Product</p>
-             <h2>Services: {services.length}</h2>      
-        </div>
+             <h2>Services: {services.length}</h2> 
+
+              <div className='mr-6 sm:w-full'>
+                        <DayPicker 
+                            mode='single'
+                            selected={selectedDate}
+                            onSelect={setSelectedDate}
+                        />
+                    </div>
+
+                    <p>You have selected date: {format(selectedDate, "PP")}</p>
+                
+            </div>      
+       
           <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {
                services.map(service=> <OnePlusProduct
                    key={service._id}
                     service={service}
                       setOnePlus={setOnePlus}
+                      selectedDate={selectedDate}
+                      setSelectedDate={setSelectedDate}
                      ></OnePlusProduct>)
 
                      
@@ -45,6 +63,9 @@ const OnePlusProducts = () => {
                     <OnePlusBookingModal
                     oneplus={oneplus}
                     setOnePlus={setOnePlus}
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                    refetch={refetch}
                     ></OnePlusBookingModal>
 
                }
