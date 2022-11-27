@@ -4,13 +4,21 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, providerLogin } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
 
+    const [createdUserEmail,  setCreatedUserEmail]= useState('')
+    const [token]= useToken(createdUserEmail)
+
     const navigate = useNavigate();
+
+    if(token){
+        navigate('/')
+    }
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -76,6 +84,7 @@ const SignUp = () => {
             console.log('saveuser', data)
             //navigate('/');
             getUserToken(email);
+            setCreatedUserEmail(email);
         })
     }
 
@@ -85,7 +94,7 @@ const SignUp = () => {
         .then(data =>{
             if(data.accessToken){
              localStorage.setItem('accessToken', data.accessToken)  
-                navigate('/');
+               // navigate('/');
             }
         })
     }

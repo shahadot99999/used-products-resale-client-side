@@ -1,4 +1,4 @@
-import { el } from "date-fns/locale";
+
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
@@ -6,8 +6,10 @@ import AppleProducts from "../../Pages/Home/ProductCards/AppleProducts";
 import OnePlusProducts from "../../Pages/Home/ProductCards/OnePlusProducts";
 import XiaomiProducts from "../../Pages/Home/ProductCards/XiaomiProducts";
 import Login from "../../Pages/Login/Login";
+import Blog from "../../Pages/Shared/Blog/Blog";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import image from '../../assets/images/404page.jpg'
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layout/Main");
@@ -44,8 +46,12 @@ const router = createBrowserRouter([
                 element: <OnePlusProducts></OnePlusProducts>
             },
             {
+                path: '/blog',
+                element: <Blog></Blog>
+            },
+            {
                 path: '*',
-                element: <div>404 Not found </div>
+                 element: <div><img src={image} alt=""></img></div>
             }
             
 
