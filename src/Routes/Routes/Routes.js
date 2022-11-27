@@ -1,3 +1,4 @@
+import { el } from "date-fns/locale";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: '/oneplus',
                 element: <OnePlusProducts></OnePlusProducts>
+            },
+            {
+                path: '*',
+                element: <div>404 Not found </div>
             }
             
 
@@ -54,8 +59,11 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <MyProducts></MyProducts>
             }
-        ]
-    }
+        ], 
+     
+
+    },
+
 ])
 
 export default router;
