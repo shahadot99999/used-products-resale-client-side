@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const OnePlusBookingModal = ({oneplus, setOnePlus, selectedDate, setSelectedDate, refetch}) => {
 
-    const {title, resaleprice, slots} =oneplus;
+    const {title, resaleprice} =oneplus;
     const date = format(selectedDate, 'PP');
     const {user}= useContext(AuthContext);
 
@@ -23,7 +23,7 @@ const OnePlusBookingModal = ({oneplus, setOnePlus, selectedDate, setSelectedDate
             price: resaleprice,
             booking: date,
            user: name,
-            slot,
+        
             email,
             phone
         }
@@ -57,14 +57,14 @@ const OnePlusBookingModal = ({oneplus, setOnePlus, selectedDate, setSelectedDate
 <form  onSubmit={handleBooking} className='grid grid-cols-1 gap-2 mt-3'>
 <input type="text" value={resaleprice} className="input w-full " />
 <input type="text" disabled value={date} className="input w-full input-bordered " />
-<select name="slot" className="select select-bordered w-full">
+{/* <select name="slot" className="select select-bordered w-full">
                         {
                             slots.map((slot, i) => <option
                                 value={slot}
                                 key={i}
                             >{slot}</option>)
                         }
-                    </select>
+                    </select> */}
 <input name="name" type="name" defaultValue={user?.displayName} disabled placeholder="Your Name"  className="input w-full " />
 <input name="email" type="email"  defaultValue={user?.displayName} disabled placeholder="Email Adress" className="input w-full " />
 <input name="phone" type="phone" placeholder="Phone Number" className="input w-full " />

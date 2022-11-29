@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AppleBookingModal = ({apple, setApple, selectedDate, setSelectedDate, refetch}) => {
-    const {title, resaleprice, slots} =apple;
+    const {title, resaleprice} =apple;
 
     const date = format(selectedDate, 'PP');
 
@@ -13,18 +13,18 @@ const AppleBookingModal = ({apple, setApple, selectedDate, setSelectedDate, refe
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
-        const slot = form.slot.value;
+       // const slot = form.slot.value;
         const name = form.name.value;
         const email = form.email.value;
         const phone = form.phone.value;
-        console.log(slot, email, name, phone);
+        console.log( email, name, phone);
         
         const booking = {
             productname:title,
             price: resaleprice,
            booking: date,
            user: name,
-            slot,
+           
             email,
             phone
         }
@@ -63,14 +63,14 @@ const AppleBookingModal = ({apple, setApple, selectedDate, setSelectedDate, refe
     <form  onSubmit={handleBooking} className='grid grid-cols-1 gap-2 mt-3'>
     <input type="text" value={resaleprice} className="input w-full " />
     <input type="text" disabled value={date} className="input w-full input-bordered " />
-    <select name="slot" className="select select-bordered w-full">
+    {/* <select name="slot" className="select select-bordered w-full">
                             {
                                 slots.map((slot, i) => <option
                                     value={slot}
                                     key={i}
                                 >{slot}</option>)
                             }
-                        </select>
+                        </select> */}
     <input name="name" type="name"  defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full " />
     <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Adress" className="input w-full " />
     <input name="phone" type="phone" placeholder="Phone Number" className="input w-full " />
