@@ -16,12 +16,12 @@ const AppleProducts = () => {
 
     const {data:services=[], refetch}= useQuery({
         queryKey: ['appleservices', date],
-        queryFn: ()=> fetch(`http://localhost:5000/appleservices?date=${date}`)
+        queryFn: ()=> fetch(`https://final-assignment-teal.vercel.app/appleservices?date=${date}`)
         .then(res=>res.json())
     })
 
     // useEffect(()=>{
-    //     fetch('http://localhost:5000/appleservices')
+    //     fetch('https://final-assignment-teal.vercel.app/appleservices')
     //     .then(res=>res.json())
     //     .then (data=>setServices(data))
     // },[services])

@@ -14,12 +14,12 @@ const OnePlusProducts = () => {
 
     const {data:services=[], refetch}= useQuery({
         queryKey: ['oneplusservice', date],
-        queryFn: ()=> fetch(`http://localhost:5000/oneplusservice?date=${date}`)
+        queryFn: ()=> fetch(`https://final-assignment-teal.vercel.app/oneplusservice?date=${date}`)
         .then(res=>res.json())
     })
 
     // useEffect(()=>{
-    //     fetch('http://localhost:5000/oneplusservice')
+    //     fetch('https://final-assignment-teal.vercel.app/oneplusservice')
     //     .then(res=>res.json())
     //     .then (data=>setServices(data))
     // },[services])

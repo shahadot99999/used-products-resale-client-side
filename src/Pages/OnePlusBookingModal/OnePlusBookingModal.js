@@ -27,7 +27,7 @@ const OnePlusBookingModal = ({oneplus, setOnePlus, selectedDate, setSelectedDate
             email,
             phone
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://final-assignment-teal.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

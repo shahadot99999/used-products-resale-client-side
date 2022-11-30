@@ -17,13 +17,13 @@ const XiaomiProducts = () => {
 
     const {data:services=[], refetch}= useQuery({
         queryKey: ['xiaomiservices'],
-        queryFn: ()=> fetch(`http://localhost:5000/xiaomiservices?date=${date}`)
+        queryFn: ()=> fetch(`https://final-assignment-teal.vercel.app/xiaomiservices?date=${date}`)
         .then(res=>res.json())
     })
 
 
     // useEffect(()=>{
-    //     fetch('http://localhost:5000/xiaomiservices')
+    //     fetch('https://final-assignment-teal.vercel.app/xiaomiservices')
     //     .then(res=>res.json())
     //     .then (data=>setServices(data))
     // },[services])

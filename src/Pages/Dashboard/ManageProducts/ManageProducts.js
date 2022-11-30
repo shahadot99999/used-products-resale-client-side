@@ -8,7 +8,7 @@ const ManageProducts = () => {
         queryKey: ['products'],
         queryFn: async()=>{
             try{
-                const res = await fetch('http://localhost:5000/products', {
+                const res = await fetch('https://final-assignment-teal.vercel.app/products', {
                     headers:{
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }

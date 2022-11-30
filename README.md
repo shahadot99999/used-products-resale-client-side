@@ -1,3 +1,12 @@
+Project Name: resale Product
+Description: I will try to three different product(apple, xiami, one plus) show. when click product you can see product details.I will create form. seller can add new product add form. Seller add product show seller form.
+
+admin user: ray4@gmail.com
+ admin pass: Charles123@
+
+ live web link: https://used-products-resale-ca156.firebaseapp.com/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

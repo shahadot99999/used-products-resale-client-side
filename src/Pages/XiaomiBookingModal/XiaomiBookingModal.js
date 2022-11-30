@@ -32,7 +32,7 @@ const XiaomiBookingModal = ({xiaomi, setXiaomi, selectedDate, setSelectedDate, r
         }
 
         
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://final-assignment-teal.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
